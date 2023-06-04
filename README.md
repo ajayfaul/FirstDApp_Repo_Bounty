@@ -72,7 +72,8 @@ The first feature to be implemented is the ability to edit and delete quests. Th
 ```
 // Allows the admin to edit the details of a quest
 function editQuest( uint256 questId, string calldata newTitle, uint8 newReward, uint256 newNumberOfRewards, uint256 newStartTime, uint256 newEndTime ) external onlyAdmin questExists(questId) 
-{ require(newStartTime >= block.timestamp, "Start time must be in the future"); 
+{ 
+require(newStartTime >= block.timestamp, "Start time must be in the future"); 
 require(newEndTime > newStartTime, "End time must be after start time"); 
 Quest storage thisQuest = quests[questId]; 
 thisQuest.title = newTitle; 
